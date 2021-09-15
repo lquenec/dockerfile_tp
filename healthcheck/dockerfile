@@ -1,0 +1,5 @@
+FROM python:3.7.0
+RUN pip install flask==1.0.2
+COPY app.py app.py
+HEALTHCHECK --interval=10s CMD curl -f http://localhost:5000/health || exit 1
+ENTRYPOINT python app.py
